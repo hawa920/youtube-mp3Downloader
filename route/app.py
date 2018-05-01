@@ -15,7 +15,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route("/", methods = ['GET'])
 @cross_origin()
 def index():
-  return "<h1>DON'T TRY ME</h1>"
+  return "<h1>You can put a web interface for youtube downloader here</h1>"
 
 
 @app.route("/mp3-dl", methods = ['POST'])
@@ -43,7 +43,12 @@ def downloader():
   # Http header
   response.headers['Content-Disposition'] = "attachment; filename=" + outfile[12:]
   return response
-  #return send_file(outfile)
+#return send_file(outfile)
+
+@app.route('/<path:dummy>')
+@cross_origin()
+def fallback(dummy):
+  return '<h1>Bro, don\'t do this...</h1>'
 
 
 if __name__ == "__main__":
