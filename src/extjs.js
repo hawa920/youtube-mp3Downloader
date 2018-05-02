@@ -12,11 +12,16 @@ $(document).ready(function()	{
 	// append to #buttons will get issues due to polymer(SPA)
 	$('#masthead').append(dnld);
 	$('#dl-button').css({position:"absolute", top:"28%", left:'85%'});
-	// If onclick event prior to submit or vise versa if a button element contains both at a time
+	
 	$('#dl-button').click(function() {
+		// avoid unexpected url request		
 		var url = window.location.href;
-		$('#dl-link').val(url);
-		$('#dl-form').submit();
+		var re = /^https:\/\/www.youtube.com\/.+/;
+		if(re.test(url)) {
+			$('#dl-link').val(url);
+			$('#dl-form').submit();
+		}
+		return false;
 	});
 });
 
