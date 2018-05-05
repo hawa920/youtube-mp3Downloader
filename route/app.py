@@ -52,5 +52,6 @@ def fallback(dummy):
 
 
 if __name__ == "__main__":
-  app.run(host='0.0.0.0')
-  #app.run(port=5000, debug=True)
+  app.run(port=5000, debug=True)
+  # Comment the line above and use the line below if you launch on your own server
+  # app.run(host='0.0.0.0')
