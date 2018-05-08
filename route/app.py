@@ -12,9 +12,11 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 
-@app.route("/", methods = ['GET'])
+@app.route("/", methods = ['GET', 'POST'])
 @cross_origin()
 def index():
+  if request.method == 'POST':
+    return 'Fuck off!'
   return "<h1>You can put a web interface for youtube downloader here</h1>"
 
 
@@ -45,13 +47,13 @@ def downloader():
   return response
 #return send_file(outfile)
 
-@app.route('/<path:dummy>')
+@app.route('/<path:dummy>', methods = ['GET', 'POST'])
 @cross_origin()
 def fallback(dummy):
   return '<h1>Bro, don\'t do this...</h1>'
 
 
 if __name__ == "__main__":
-  app.run(port=5000, debug=True)
+  #app.run(port=5000, debug=True)
   # Comment the line above and use the line below if you launch on your own server
-  # app.run(host='0.0.0.0')
+  app.run(host='0.0.0.0')
