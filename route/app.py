@@ -35,7 +35,7 @@ def downloader():
       'preferredcodec': 'mp3',
     }],
     'noplaylist': True,
-    'outtmpl': outfile
+    'outtmpl': outfile+'%(ext)s'
   }
 
   # Download with youtube-dl
